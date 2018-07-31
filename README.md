@@ -1,0 +1,1 @@
+Extends the Pagelines Platform 5 Loops addon with the [loops_excerpt_readmore] shortcode, which inserts the excerpt with the "(Read More)" link nicely displayed inline at the end the excerpt.
