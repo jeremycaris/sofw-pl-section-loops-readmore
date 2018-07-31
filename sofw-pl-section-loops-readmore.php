@@ -53,7 +53,7 @@ class SOFW_PL_Loops_Readmore_Section extends PL_Section{
       $out = sprintf('<div class="%s pl-loops-readmore-excerpt">%s<a href="%s"> (Read More)</a></div>',
         $atts['class'],
         pl_excerpt_by_id( $this->p->ID, $atts['length'] ),
-        get_post_permalink( $this->p->ID )
+        get_permalink( $this->p->ID )
       );
 
       return $out;
