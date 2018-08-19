@@ -2,12 +2,12 @@
 /*
 
   Plugin Name:  PageLines Section Loops - Read More Extension
-  Description:  Extends the Pagelines Platform 5 Loops addon with the [loops_excerpt_readmore] shortcode, which inserts the excerpt with a "Read More" link nicely displayed inline at the end the excerpt.
+  Description:  Extends the Pagelines Platform 5 Loops addon with the [loops_excerpt_readmore] shortcode, which inserts the excerpt with a "Read More" link nicely displayed inline at the end the excerpt. Excerpt length defaults to 25 unless otherwise specified: [loops_excerpt_readmore length="40"].
 
   Author:       Jeremy Caris
   Author URI:   https://714Web.com
 
-  Version:      0.1
+  Version:      0.1.1
 
   PageLines:    SOFW_PL_Loops_Readmore_Section
   Filter:       content
@@ -23,7 +23,7 @@
 if( ! class_exists('PL_Section') )
   return;
 
-class SOFW_PL_Loops_Readmore_Section extends PL_Section{
+class SOFW_PL_Loops_Readmore_Section extends PL_Loops_Section{
 
     function section_persistent(){
 
@@ -33,13 +33,13 @@ class SOFW_PL_Loops_Readmore_Section extends PL_Section{
 
       add_action( 'template_redirect', array( $this, 'check_post_object' ) );
     }
-
-
+    
+    
     function add_shortcodes() {
       add_shortcode( 'loops_excerpt_readmore', array( $this, 'loops_excerpt_readmore' ) );
     }
-
-
+    
+    
     function loops_excerpt_readmore( $atts ) {
        global $post;
 
@@ -50,7 +50,7 @@ class SOFW_PL_Loops_Readmore_Section extends PL_Section{
        $atts = shortcode_atts( $defaults, $atts );
 
 
-      $out = sprintf('<div class="%s pl-loops-readmore-excerpt">%s<a href="%s"> (Read More)</a></div>',
+      $out = sprintf('<style style="text/css">.pl-loops-readmore-excerpt p {display: inline;}</style><div class="%s pl-loops-readmore-excerpt">%s<a href="%s"> (Read More)</a></div>',
         $atts['class'],
         pl_excerpt_by_id( $this->p->ID, $atts['length'] ),
         get_permalink( $this->p->ID )

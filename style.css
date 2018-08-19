@@ -1,0 +1,5 @@
+/* Plugin is not pulling from here as it should for some reason. Adding in style tag in shortcode function for now... */
+
+.pl-loops-readmore-excerpt p {
+  display: inline;
+}
